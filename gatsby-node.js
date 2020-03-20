@@ -1,42 +1,37 @@
-const Promise = require('bluebird')
 const path = require('path')
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+  const blogPost = path.resolve('./src/templates/blog-post.js')
 
-  return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulBlogPost {
-              edges {
-                node {
-                  title
-                  slug
-                }
-              }
-            }
+  const result = await       graphql(`
+    {
+      allContentfulBlogPost {
+        edges {
+          node {
+            title
+            slug
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
         }
+      }
+    }
+  `)
 
-        const posts = result.data.allContentfulBlogPost.edges
-        posts.forEach(post => {
-          createPage({
-            path: `/blog/${post.node.slug}/`,
-            component: blogPost,
-            context: {
-              slug: post.node.slug,
-            },
-          })
-        })
-      })
-    )
+  if (result.errors) {
+    console.log(result.errors)
+    
+    throw result.errors
+  }
+
+  const posts = result.data.allContentfulBlogPost.edges
+
+  return posts.forEach(post => {
+    createPage({
+      path: `/blog/${post.node.slug}/`,
+      component: blogPost,
+      context: {
+        slug: post.node.slug,
+      },
+    })
   })
 }
