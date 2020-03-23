@@ -1,22 +1,12 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import { css } from '@creditas/stylitas'
 import get from 'lodash/get'
+import { graphql } from 'gatsby'
+import { Typography } from '@creditas/typography'
+
 import {Layout} from '../components/Layout'
 import {ArticlePreview} from '../components/ArticlePreview'
-
-const styles = css`
-  .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 61.8vh;
-    max-height: 400px;
-    background: #e1e1e1;
-    font-size: 2em;
-    overflow: hidden;
-  }
-`
+import {ArticleList} from '../components/ArticleList'
+import {Wrapper} from '../components/Wrapper'
 
 class BlogIndex extends React.Component {
   render() {
@@ -25,19 +15,17 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} siteTitle={siteTitle}>
-        <div className={styles.hero}>Blog</div>
-        <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview article={node} />
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <Typography variant="h1">Blog</Typography>
+        <Wrapper>
+          <Typography variant="h3">Recent articles</Typography>
+          <ArticleList>
+            {posts.map(({ node }) => (
+              <li key={node.slug}>
+                <ArticlePreview article={node} />
+              </li>
+            ))}
+          </ArticleList>
+        </Wrapper>
       </Layout>
     )
   }

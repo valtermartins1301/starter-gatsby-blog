@@ -2,36 +2,31 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
+import { Typography } from "@creditas/typography"
+
 import {Layout} from '../components/Layout'
 import {Hero} from '../components/Hero'
+import { Wrapper } from '../components/Wrapper'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const [author] = get(this, 'data.allContentfulPerson.edges')
+    const post = get(this, 'props.data.contentfulBlogPost')
 
     return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
-          </div>
-        </div>
+      <Layout location={this.props.location} siteTitle={`${post.title}`}>
+        <Hero data={post} />
+        <Wrapper>
+          <Typography variant="h1">{post.title}</Typography>
+          <Typography variant="support">
+            {post.publishDate}
+          </Typography>
+          <br/>
+          <Typography variant="paragraph"
+            dangerouslySetInnerHTML={{
+              __html: post.body.childMarkdownRemark.html,
+            }}
+          />
+        </Wrapper>
       </Layout>
     )
   }

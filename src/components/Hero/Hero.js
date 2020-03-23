@@ -7,10 +7,18 @@ import styles from './hero.styles.js'
 import {Details} from './Details'
 
 
+const Image = styled(Img)`
+  max-height: 30em;
+  padding: 0;
+`
+
+
 const HeroRaw = ({ className, data }) => (
   <div className={className}>
-    <Img alt={data.name} fluid={data.heroImage.fluid}/>
-    <Details data={data} />
+    <Image alt={data.name} fluid={data.heroImage.fluid}/>
+    {data.shortBio && (
+      <Details data={data} />
+    )}
   </div>
 )
 

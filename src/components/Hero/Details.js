@@ -1,12 +1,13 @@
 import React from 'react'
 import {styled} from '@creditas/stylitas'
 import styles from './details.styles'
+import { Typography } from '@creditas/typography'
 
 const DetailsRaw = ({ className, data }) => (
   <div className={className}>
-    <h3>{data.name}</h3>
-    <h4>{data.title}</h4>
-    <p>{data.shortBio.shortBio}</p>
+    <Typography variant="h3" color="#fff">{data.name}</Typography>
+    <Typography variant="h6" color="#fff">{data.title}</Typography>
+    <Typography variant="paragraph" color="#fff">{data.shortBio.shortBio}</Typography>
   </div>
 )
 

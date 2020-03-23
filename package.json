@@ -8,9 +8,11 @@
     "url": "https://github.com/contentful/starter-gatsby-blog/issues"
   },
   "dependencies": {
+    "@creditas/card": "^1.0.90",
     "@creditas/global": "^1.0.89",
     "@creditas/stylitas": "^2.17.13",
     "@creditas/tokens": "^2.2.3",
+    "@creditas/typography": "^2.2.43",
     "gatsby": "^2.19.1",
     "gatsby-image": "^2.0.13",
     "gatsby-plugin-react-helmet": "^3.0.0",
@@ -38,6 +40,7 @@
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
+    "start": "gatsby develop",
     "setup": "npm install --no-save contentful-import yargs-parser axios chalk && node ./setup.js"
   }
 }

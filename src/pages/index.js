@@ -1,10 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import { Typography } from "@creditas/typography";
+
 import {Hero} from '../components/Hero'
 import {Layout} from '../components/Layout'
+import {Wrapper} from '../components/Wrapper'
 import {ArticlePreview} from '../components/ArticlePreview'
+import { ArticleList } from '../components/ArticleList'
 
 class RootIndex extends React.Component {
   render() {
@@ -13,23 +16,18 @@ class RootIndex extends React.Component {
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
 
     return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
+      <Layout location={this.props.location} siteTitle={siteTitle}>
+        <Hero data={author.node} />
+        <Wrapper>
+          <Typography variant="h3">Recent articles</Typography>
+          <ArticleList>
+            {posts.map(({ node }) => (
+              <li key={node.slug}>
+                <ArticlePreview article={node} />
+              </li>
+            ))}
+          </ArticleList>
+        </Wrapper>        
       </Layout>
     )
   }
