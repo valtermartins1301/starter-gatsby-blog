@@ -100,11 +100,19 @@ class RootIndex extends React.Component {
                       icon={node.icon}
                       body={(
                         <div>
-                          <Typography variant="paragraph">De R$</Typography>
-                          <Typography variant="form">{`${node.minimalRange} mil até R$ ${node.maximumRange} ${node.maximumUnit}`}</Typography>
-                          <br/>
-                          <Typography variant="paragraph">Juros a partir de</Typography>
-                          <Typography variant="form">{node.description}</Typography>
+                          {node.minimalRange && (
+                            <div>
+                              <Typography variant="paragraph">De R$</Typography>
+                              <Typography variant="form">{`${node.minimalRange} mil até R$ ${node.maximumRange} ${node.maximumUnit}`}</Typography>            
+                              <br/>
+                            </div>
+                          )}
+                          <Typography 
+                            variant="paragraph"
+                            dangerouslySetInnerHTML={{
+                              __html: node.resume.childMarkdownRemark.html,
+                            }}
+                          />
                         </div>
                       )}
                       action={(<ActionLink style={{ paddingLeft: 0 }}>Simule</ActionLink>)}
@@ -128,7 +136,11 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          description
+          resume {
+            childMarkdownRemark {
+              html
+            }
+          }
           minimalRange
           maximumRange
           maximumUnit
