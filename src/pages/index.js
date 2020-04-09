@@ -90,7 +90,7 @@ class RootIndex extends React.Component {
             </Grid>
           </Grid>
           <Products>
-            <Wrapper width='800px'>
+            <Wrapper width='60vw'>
               <ArticleList>
                 {products.map(({ node }) => (
                   <li key={node.productPage.slug}>

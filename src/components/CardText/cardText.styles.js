@@ -24,8 +24,9 @@ const containerBase = css`
 
 const containerHorizontal = ({ containerStyle, width, height }) => css`
   ${containerBase}
-  width: ${width || 'auto'};
-  height: ${height || 'auto'};
+  max-width: ${width || 'auto'};
+  min-height: 250px;
+  max-height: ${height || 'auto'};
   ${containerStyle}
 `;
 
@@ -35,7 +36,7 @@ const title = css`
 `;
 
 const containerIconHorizontal = css`
-  right: 0px;
+  right: -1vw;
   position: absolute !important;
   overflow: initial !important;
   
