@@ -1,26 +1,28 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { ThemeProvider } from '@creditas/stylitas'
+import { ThemeProvider, styled } from '@creditas/stylitas'
 import tokens from '@creditas/tokens'
-import {Container} from '../Container'
-import {Navigation} from '../Navigation'
+import {Container} from '@creditas/layout'
+import {Header} from '../Header'
 import {Global} from '@creditas/global'
 
-class Layout extends React.Component {
-  render() {
-    const { children, siteTitle } = this.props
+const Body = styled.div`
+  background-color: #f8f8f8;
+  overflow: hidden;
+`
 
-    return (
-      <ThemeProvider theme={{ ...tokens }}>
-        <Helmet title={siteTitle} />
-        <Global/>
-        <Container>
-          <Navigation />
-          {children}
-        </Container>
-      </ThemeProvider>
-    )
-  }
-}
+const Layout = ({ children, siteTitle }) => (
+  <ThemeProvider theme={{ ...tokens }}>
+    <Header />
+    <Body>
+      <Helmet title={siteTitle} />
+      <Global/>
+
+      <Container fixed={true}>
+        {children}
+      </Container>
+    </Body>
+  </ThemeProvider>
+)
 
 export { Layout }

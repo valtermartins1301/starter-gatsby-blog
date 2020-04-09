@@ -65,5 +65,7 @@ public
 
 # contentful config file
 .contentful.json
+.npmrc
+
 # Local Netlify folder
 .netlify

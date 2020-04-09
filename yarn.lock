@@ -383,7 +383,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-jsx@^7.8.3":
+"@babel/plugin-syntax-jsx@^7.2.0", "@babel/plugin-syntax-jsx@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.8.3.tgz#521b06c83c40480f1e58b4fd33b92eceb1d6ea94"
   integrity sha512-WxdW9xyLgBdefoo0Ynn3MRSkhe5tFVxxKNVdnZSh318WrG2e2jH+E9wd/++JsqcLJZPfz87njQJ8j2Upjm0M0A==
@@ -649,6 +649,16 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-jsx" "^7.8.3"
 
+"@babel/plugin-transform-react-jsx@^7.3.0":
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.9.4.tgz#86f576c8540bd06d0e95e0b61ea76d55f6cbd03f"
+  integrity sha512-Mjqf3pZBNLt854CK0C/kRuXAnE6H/bo7xYojP+WGtX8glDGSibcwnsWwhwoSuRg0+EBnxPC1ouVnuetUIlPSAw==
+  dependencies:
+    "@babel/helper-builder-react-jsx" "^7.9.0"
+    "@babel/helper-builder-react-jsx-experimental" "^7.9.0"
+    "@babel/helper-plugin-utils" "^7.8.3"
+    "@babel/plugin-syntax-jsx" "^7.8.3"
+
 "@babel/plugin-transform-react-jsx@^7.9.1":
   version "7.9.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.9.1.tgz#d03af29396a6dc51bfa24eefd8005a9fd381152a"
@@ -878,6 +888,21 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-13.4.0.tgz#a59c311ebd1b801ee00edbc08663c8d78da26171"
   integrity sha512-YPdYqGmWiGAood7ri2BUXfPQKNthkQYV1rmQdaq4UAxWK5NLB5NXckaUYLbohqhHKtrq4tnfzVn+ePWID7Dzbg==
 
+"@creditas/brand-icons@^1.1.7":
+  version "1.1.7"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/brand-icons/-/@creditas/brand-icons-1.1.7.tgz#448e8c757e1e60e4b0b5baaa09bd37c600c35dbc"
+  integrity sha1-RI6MdX4eYOSwtbqqCb03xgDDXbw=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
+"@creditas/button@^1.4.18":
+  version "1.4.18"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/button/-/@creditas/button-1.4.18.tgz#5f50c9dde62b98af9815ac6d0598fb4d497b632e"
+  integrity sha1-X1DJ3eYrmK+YFaxtBZj7TUl7Yy4=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "@emotion/babel-preset-css-prop" "^10.0.14"
+
 "@creditas/card@^1.0.90":
   version "1.0.90"
   resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/card/-/@creditas/card-1.0.90.tgz#189538b69fa9ad098bde809079419b69af51b004"
@@ -889,6 +914,28 @@
   version "1.0.89"
   resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/global/-/@creditas/global-1.0.89.tgz#f3fad512cca77f6bd549fb7105b2b2b98f8d7ca6"
   integrity sha1-8/rVEsynf2vVSftxBbKyuY+NfKY=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
+"@creditas/icons@^3.0.1":
+  version "3.0.1"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/icons/-/@creditas/icons-3.0.1.tgz#d6721639f8c4e0bd7212613350618b9febfad39f"
+  integrity sha1-1nIWOfjE4L1yEmEzUGGLn+v6058=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "@creditas/utils" "^0.0.1"
+
+"@creditas/layout@^1.0.55":
+  version "1.0.55"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/layout/-/@creditas/layout-1.0.55.tgz#41fff52fd50724a7d50250e97684ec2c584a11ad"
+  integrity sha1-Qf/1L9UHJKfVAlDpdoTsLFhKEa0=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
+"@creditas/navbar@^1.1.9":
+  version "1.1.9"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/navbar/-/@creditas/navbar-1.1.9.tgz#3aab8165242589f129affda317c95d0094f0bdbc"
+  integrity sha1-OquBZSQlifEpr/2jF8ldAJTwvbw=
   dependencies:
     "@babel/runtime" "^7.5.5"
 
@@ -914,6 +961,30 @@
   integrity sha1-Z6JPbxd3oHAub5Nns8whRf/ksaY=
   dependencies:
     "@babel/runtime" "^7.5.5"
+
+"@creditas/utils@^0.0.1":
+  version "0.0.1"
+  resolved "https://creditas.jfrog.io/creditas/api/npm/npm/@creditas/utils/-/@creditas/utils-0.0.1.tgz#239a350abe94622612276fb71eee0922989a840f"
+  integrity sha1-I5o1Cr6UYiYSJ2+3Hu4JIpiahA8=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
+"@emotion/babel-plugin-jsx-pragmatic@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@emotion/babel-plugin-jsx-pragmatic/-/babel-plugin-jsx-pragmatic-0.1.5.tgz#27debfe9c27c4d83574d509787ae553bf8a34d7e"
+  integrity sha512-y+3AJ0SItMDaAgGPVkQBC/S/BaqaPACkQ6MyCI2CUlrjTxKttTVfD3TMtcs7vLEcLxqzZ1xiG0vzwCXjhopawQ==
+  dependencies:
+    "@babel/plugin-syntax-jsx" "^7.2.0"
+
+"@emotion/babel-preset-css-prop@^10.0.14":
+  version "10.0.27"
+  resolved "https://registry.yarnpkg.com/@emotion/babel-preset-css-prop/-/babel-preset-css-prop-10.0.27.tgz#58868d9a6afee0eeaeb0fa9dc5ccb1b12d4f786b"
+  integrity sha512-rducrjTpLGDholp0l2l4pXqpzAqYYGMg/x4IteO0db2smf6zegn6RRZdDnbaoMSs63tfPWgo2WukT1/F1gX/AA==
+  dependencies:
+    "@babel/plugin-transform-react-jsx" "^7.3.0"
+    "@babel/runtime" "^7.5.5"
+    "@emotion/babel-plugin-jsx-pragmatic" "^0.1.5"
+    babel-plugin-emotion "^10.0.27"
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
