@@ -150,7 +150,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulProduct(sort: {order: ASC}) {
+    allContentfulProduct {
       edges {
         node {
           title
