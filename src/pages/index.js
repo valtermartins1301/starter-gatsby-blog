@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { ActionLink } from '@creditas/button';
 import { Typography } from "@creditas/typography";
 import { styled } from "@creditas/stylitas";
-import banner from "../images/pill-banner-tv-campaign.jpg" // Tell Webpack this JS file uses this image
 
 import {Layout} from '../components/Layout'
 import {Wrapper} from '../components/Wrapper'
@@ -15,7 +15,6 @@ import { Grid } from '@creditas/layout';
 const Pill = styled.div`
   position: relative;
   z-index: 2;
-  // margin: 2rem 5rem;
 
   > * {
     position: absolute;
@@ -47,8 +46,8 @@ const Title = styled.div`
 `
 
 const Figure = styled.figure`
-  img {
-    max-width: 50rem;
+  > div {
+    width: 50rem !important;
   }
 `
 
@@ -66,26 +65,31 @@ const Products = styled.div`
 
 class RootIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const products = get(this, 'props.data.allContentfulProduct.edges')
+    const index = get(this.props, 'data.contentfulLanding')
+    const products = get(this.props, 'data.allContentfulProduct.edges')
 
     return (
-      <Layout location={this.props.location} siteTitle={siteTitle}>
+      <Layout location={this.props.location} siteTitle={index.title}>
         <Section>
           <Grid container>
             <Grid item colStart={1} colEnd={5}>
               <Title>
                 <Pill>
                   <div>
-                    <Typography variant='h1' color='#fff'> Empréstimo com Garantia</Typography>
-                    <Typography variant='h4' color='#fff'> Seu carro é garantia das melhores soluções</Typography>
+                    <Typography
+                      component="div"
+                      variant="h3"
+                      color='#fff'
+                      dangerouslySetInnerHTML={{
+                        __html: index.description.childMarkdownRemark.html,
+                      }}/>
                   </div>
                 </Pill>
               </Title>
             </Grid>
             <Grid item colStart={7} colEnd={3}>
               <Figure> 
-                <img src={banner} alt="Mulher segurando chave de um carro com o chaveiro da Creditas."/>          
+                <Img alt={index.heroImage.description} fluid={index.heroImage.fluid}/>          
               </Figure>
             </Grid>
           </Grid>
@@ -98,6 +102,7 @@ class RootIndex extends React.Component {
                       variant="horizontal"
                       title={node.title}
                       icon={node.icon}
+                      action={(<ActionLink style={{ paddingLeft: 0 }}>Simule</ActionLink>)}
                       body={(
                         <div>
                           {node.minimalRange && (
@@ -108,6 +113,7 @@ class RootIndex extends React.Component {
                             </div>
                           )}
                           <Typography 
+                            component="div"
                             variant="paragraph"
                             dangerouslySetInnerHTML={{
                               __html: node.resume.childMarkdownRemark.html,
@@ -115,7 +121,6 @@ class RootIndex extends React.Component {
                           />
                         </div>
                       )}
-                      action={(<ActionLink style={{ paddingLeft: 0 }}>Simule</ActionLink>)}
                     />
                   </li>
                 ))}
@@ -132,7 +137,20 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulProduct {
+    contentfulLanding(slug: { eq: "index" }) {
+      title
+      heroImage {
+        fluid(resizingBehavior: SCALE) {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      description {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allContentfulProduct(sort: {order: ASC}) {
       edges {
         node {
           title

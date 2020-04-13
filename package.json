@@ -8,6 +8,7 @@
     "url": "https://github.com/contentful/starter-gatsby-blog/issues"
   },
   "dependencies": {
+    "@contentful/rich-text-types": "^14.1.0",
     "@creditas/brand-icons": "^1.1.7",
     "@creditas/button": "^1.4.18",
     "@creditas/card": "^1.0.90",
